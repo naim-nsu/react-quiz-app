@@ -1,21 +1,27 @@
 import "../styles/App.css";
 import Layout from "./Layout";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Quiz from "./pages/Quiz";
 import Result from "./pages/Result";
-//import Quiz from "./pages/Quiz";
-// import Login from "./pages/Login";
-// import Home from "./pages/Home";
-// import Signup from "./pages/Signup";
+import Signup from "./pages/Signup";
+
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 function App() {
   return (
-    <div className="App">
-      <Layout>
-        {/* <Home /> */}
-        {/* <Signup /> */}
-        {/* <Login /> */}
-        {/* <Quiz /> */}
-        <Result />
-      </Layout>
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Layout>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/quiz" element={<Quiz />} />
+            <Route path="/result" element={<Result />} />
+          </Routes>
+        </Layout>
+      </div>
+    </BrowserRouter>
   );
 }
 
