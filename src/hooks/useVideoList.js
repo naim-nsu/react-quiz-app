@@ -14,22 +14,23 @@ export default function useVideoList(page) {
   const [error, setError] = useState(false);
   const [videos, setVideos] = useState([]);
   const [hasMore, setHasMore] = useState(true);
+
   useEffect(() => {
     async function fetchVideos() {
-      //db related works
+      // database related works
       const db = getDatabase();
       const videosRef = ref(db, "videos");
       const videoQuery = query(
         videosRef,
         orderByKey(),
-        startAt(page + ""),
+        startAt("" + page),
         limitToFirst(8)
       );
 
       try {
         setError(false);
         setLoading(true);
-        // request firbase db
+        // request firebase database
         const snapshot = await get(videoQuery);
         setLoading(false);
         if (snapshot.exists()) {
